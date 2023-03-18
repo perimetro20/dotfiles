@@ -189,7 +189,12 @@
 ** LSP
 #+begin_src emacs-lisp
   (use-package lsp-mode
-    :ensure t)
+    :ensure t
+    :commands lsp
+    :diminish lsp-mode
+    :hook (elixir-mode . lsp)
+    :init
+    (add-to-list 'exec-path "~/Installations/elixir-ls"))
 
   (use-package lsp-ui
     :ensure t)
@@ -200,6 +205,3 @@
    (use-package elixir-mode
      :ensure t)
    #+END_SRC emacs-lisp
-
-   hello
-emacs-
