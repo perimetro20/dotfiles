@@ -31,25 +31,6 @@
         (evil-org-agenda-set-keys))
   #+END_SRC
 
-* HTML
-#+begin_src emacs-lisp
-  (use-package web-mode
-    :ensure t)
-
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
-(defun my-web-mode-hook ()
-  "Hooks for Web mode."
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-css-indent-offset 2)
-  (setq web-mode-code-indent-offset 2)
-)
-(add-hook 'web-mode-hook  'my-web-mode-hook)
-#+end_src
-
-
 * Appearance
   #+BEGIN_SRC emacs-lisp
     (set-face-attribute 'default nil
@@ -170,9 +151,55 @@
     (yas-global-mode t)
   #+END_SRC
 
+* Web
+** HTML
+#+begin_src emacs-lisp
+(use-package web-mode
+  :ensure t)
+
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
+(defun my-web-mode-hook ()
+  "Hooks for Web mode."
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+)
+(add-hook 'web-mode-hook  'my-web-mode-hook)
+#+end_src
+
+* Completion
+** Company Mode
+#+begin_src emacs-lisp
+  (use-package company
+    :ensure t
+    :hook (after-init . global-company-mode))
+#+end_src
+
 * Programming Languages
+** Flycheck
+#+begin_src emacs-lisp
+  (use-package flycheck
+    :ensure t)
+  (global-flycheck-mode)
+#+end_src
+
+** LSP
+#+begin_src emacs-lisp
+  (use-package lsp-mode
+    :ensure t)
+
+  (use-package lsp-ui
+    :ensure t)
+#+end_src
+
 ** Elixir
    #+BEGIN_SRC emacs-lisp
    (use-package elixir-mode
      :ensure t)
    #+END_SRC emacs-lisp
+
+   hello
+emacs-
