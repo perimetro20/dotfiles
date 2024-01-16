@@ -234,3 +234,14 @@
     :after (treemacs evil)
     :ensure t)
 #+END_SRC
+
+** Python
+#+BEGIN_SRC emacs-lisp
+  (setq treesit-font-lock-level 3)
+  (setq major-mode-remap-alist
+        '((javascript-mode . js-ts-mode)
+          (css-mode . css-ts-mode)
+          (python-mode . python-ts-mode)))
+
+  (add-hook 'python-ts-mode-hook 'eglot-ensure)
+#+END_SRC
